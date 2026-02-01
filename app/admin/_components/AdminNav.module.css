@@ -1,0 +1,83 @@
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  background: rgba(10,11,16,.65);
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+/* container */
+.shell{
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* left section */
+.left{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* brand */
+.brand{
+  font-weight: 900;
+  letter-spacing: .6px;
+  text-transform: lowercase;
+  margin-right: 8px;
+  color: #fff;
+}
+
+/* links */
+.link{
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(238,240,255,.75);
+  transition: background .15s ease, color .15s ease;
+}
+
+.link:hover{
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+
+/* logout button */
+.logout{
+  margin-left: auto;
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.05);
+  color: rgba(238,240,255,.9);
+  cursor: pointer;
+  font-weight: 700;
+  transition: background .15s ease, transform .15s ease;
+}
+
+.logout:hover{
+  background: rgba(255,255,255,.08);
+  transform: translateY(-1px);
+}
+
+/* mobile */
+@media (max-width: 600px){
+  .shell{
+    padding: 12px 14px;
+  }
+
+  .brand{
+    display: none; /* keep it clean on small screens */
+  }
+
+  .link{
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+}

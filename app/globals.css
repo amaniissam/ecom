@@ -1,0 +1,29 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: #eef0ff;
+  background: #0b0c10; /* base color only */
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ✅ This layer stays fixed, so no "gradient reset" line on scroll */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(1200px 700px at 20% 10%, rgba(124,58,237,.22), transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, rgba(0,206,201,.18), transparent 55%),
+    radial-gradient(900px 600px at 50% 90%, rgba(236,72,153,.12), transparent 55%),
+    #0b0c10;
+
+  /* extra safety */
+  background-repeat: no-repeat;
+}
