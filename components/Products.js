@@ -8,7 +8,11 @@ import styles from "./Products.module.css";
 import UpperBar from "./UpperBar";
 
 function initials(name = "") {
-  const t = name.trim().split(/\s+/).slice(0, 2).map(s => s[0]?.toUpperCase() || "");
+  const t = name
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((s) => s[0]?.toUpperCase() || "");
   return t.join("") || "M";
 }
 
@@ -32,11 +36,12 @@ export default function Products() {
   const filtered = useMemo(() => {
     const s = search.trim().toLowerCase();
     if (!s) return products;
-    return products.filter((p) => String(p.name || "").toLowerCase().includes(s));
+    return products.filter((p) =>
+      String(p.name || "").toLowerCase().includes(s)
+    );
   }, [products, search]);
 
   const totalCount = products.length;
-  const showing = filtered.length;
 
   return (
     <>
@@ -53,8 +58,6 @@ export default function Products() {
                 <p className={styles.hText}>
                   Clean design. Fast browsing. Simple checkout.
                 </p>
-
-
 
                 <div className={styles.controls}>
                   <input
@@ -91,7 +94,34 @@ export default function Products() {
           </section>
 
           {loading ? (
-            <div className={styles.loading}>Loading products…</div>
+            <section className={styles.section} id="products">
+              <div className={styles.sectionTitle}>Products</div>
+
+              <div className={styles.grid}>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <article key={i} className={`${styles.card} ${styles.skelCard}`}>
+                    <div className={styles.glow} />
+
+                    <div className={`${styles.media} ${styles.skelBlock}`} />
+
+                    <div className={styles.cardBody}>
+                      <div className={styles.nameRow}>
+                        <div className={`${styles.skelLine} ${styles.skelName}`} />
+                        <div className={`${styles.skelPill} ${styles.skelPrice}`} />
+                      </div>
+
+                      <div className={styles.meta}>
+                        <div className={`${styles.skelLine} ${styles.skelMeta}`} />
+                      </div>
+
+                      <div className={styles.actions}>
+                        <div className={styles.skelBtn} />
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
           ) : filtered.length === 0 ? (
             <div className={styles.empty}>No products found.</div>
           ) : (
@@ -129,8 +159,6 @@ export default function Products() {
                         >
                           View
                         </button>
-
-
                       </div>
                     </div>
                   </article>
@@ -143,3 +171,4 @@ export default function Products() {
     </>
   );
 }
+
